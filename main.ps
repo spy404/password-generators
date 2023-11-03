@@ -1,0 +1,15 @@
+function Generate-Password {
+  param([int]$length)
+
+  $charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  $password = ""
+
+  for ($i = 0; $i -lt $length; $i++) {
+    $randomIndex = Get-Random -Minimum 0 -Maximum $charset.Length
+    $password += $charset[$randomIndex]
+  }
+
+  return $password
+}
+
+Write-Host (Generate-Password 10)
